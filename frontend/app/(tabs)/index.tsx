@@ -1,31 +1,36 @@
-import { Image } from 'expo-image';
-import { StyleSheet } from 'react-native';
-import { View, Text} from 'react-native';
-
-/*
-import { HelloWave } from '@/components/hello-wave';
-*/
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-import { BounceIn } from 'react-native-reanimated';
-
+import { useState } from 'react';
+import { View, Text, TextInput, Image, StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
+  const [name, setName] = useState('');
+
   return (
     <View style={s.screen}>
       <Image
-        source={{ uri: 'https://scontent.fmnl4-8.fna.fbcdn.net/v/t39.30808-6/504248074_24796994163223795_812235706363061218_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEfgCJWMpPz2VeAzlEEBvJvDs60j55VouwOzrSPnlWi7A_7szePy2xjFDhsXmyI4LFfS_pnk2TQtFVpUGsVm136&_nc_ohc=Vn0jZkQaz-oQ7kNvwGQbVam&_nc_oc=Adr1GfIK8mnTHD1TozG7S7BmtXf-Ju07ow4lwYmnXJzdVmCErkymc0MLZTPl1Uso4a0&_nc_zt=23&_nc_ht=scontent.fmnl4-8.fna&_nc_gid=rW6e9gFCX1BGcA74iCAc6Q&_nc_ss=7b2a8&oh=00_Af4N0WV1srZYJZeDhGwY0TrIVZ4KU8kQfQBseubYUQm5iA&oe=69FA6E2D' }}
+        source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhr0zELm_Cehi0PL97YAEbLaqzNa_C0GqBMg&s' }}
         style={s.photo}
       />
-      <Text style={s.name}>Patreece Monique U. Juan</Text>
-      <Text style={s.bio}>Multimedia Arts Student | Social Media Content Specialist</Text>
+
+      <TextInput
+        placeholder="Type your name..."
+        onChangeText={setName}
+        style={{
+          height: 40,
+          margin: 12,
+          borderWidth: 1,
+          padding: 10,
+          width: 200,
+        }}
+      />
+
+      <Text style={s.name}>
+        Hello, {name}!
+      </Text>    
     </View>
   );
 }
 
-// I change the background color, added a border and shadow. 05/01/2026
+// I changed the background color, added a border and shadow. 05/01/2026
 const s = StyleSheet.create({
   screen: { flex:1, alignItems: 'center', justifyContent:'center', backgroundColor: '#bcde7d' },
   photo:  { width:120, height:120, borderRadius:60, borderWidth:5, borderColor: '#f5a3dd', shadowColor: '#a74871', shadowOffset: { width: 3, height: 6 },
